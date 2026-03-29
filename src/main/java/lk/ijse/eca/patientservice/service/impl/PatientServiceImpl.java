@@ -130,6 +130,7 @@ public class PatientServiceImpl implements PatientService {
         List<PatientResponseDTO> patient = patientRepository.findAll()
                 .stream()
                 .map(patientMapper::toPatientResponseDTO)
+                .peek(p -> p.setAddress(p.getAddress() + ", Sri Lanka"))
                 .toList();
         log.debug("Fetched {} patients.", patient.size());
         return patient;
